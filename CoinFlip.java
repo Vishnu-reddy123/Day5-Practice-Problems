@@ -8,5 +8,6 @@ public class CoinFlip {
         else {
             System.out.println("Tails");
         }
+        System.out.println("Percentage of flips : " + (((float)random)*100));
     }
 }
