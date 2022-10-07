@@ -1,13 +1,31 @@
+import java.util.Random;
+import java.util.Scanner;
 public class CoinFlip {
+    static int getUserInput(){
+        System.out.println("Enter number of times to flip coins:");
+        Scanner scan = new Scanner(System.in);
+        int flip = scan.nextInt();
+        if(flip<0){
+            System.out.println("Enter positive number");
+            flip = getUserInput();
+        }
+        return flip;
+    }
     public static void main(String[] args){
-        double random = Math.random();
-        System.out.println(random);
-        if(random < 0.5){
-            System.out.println("Heads");
+        int flips = getUserInput();
+        boolean HEAD = true;
+        int headFlips = 0;
+        int tailFlips = 0;
+        Random random = new Random();
+        for(int i = 1;i <= flips;i++) {
+            boolean flipResult = random.nextBoolean();
+            if (flipResult == HEAD) {
+                headFlips += 1;
+            } else {
+                tailFlips += 1;
+            }
         }
-        else {
-            System.out.println("Tails");
-        }
-        System.out.println("Percentage of flips : " + (((float)random)*100));
+        System.out.println("percentage of Head Flips"+(((float)headFlips/flips)*100));
+        System.out.println("Percentage of Tail Flips"+(((float)tailFlips/flips)*100));
     }
 }
